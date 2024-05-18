@@ -142,8 +142,8 @@ AWS CloudFormation stack(s).*
 
   | TO DO           | Description                                    | Status
   | --              | --                                             | --
-  | Unit Coverage   | Adds Jest Unit Test support                    | 📝 WIP
-  | GitHub Actions  | Continuous integration and project automation  | 📚 Backlog
+  | Unit Coverage   | Adds Jest Unit Test support                    | ✅
+  | GitHub Actions  | Continuous integration and project automation  | 📝 WIP
 
 See the [open issues][GitHubIssue-url]
 for a full list of proposed features and known issues.
