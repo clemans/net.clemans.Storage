@@ -7,6 +7,7 @@ const config: Config.InitialOptions = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
+  testPathIgnorePatterns: ['/dist/'],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$'
 };
 export default config;
