@@ -49,7 +49,7 @@ cdk.yaml
 configs.ts
 
 # Ignore parameters configuration
-parameters.ts
+# parameters.ts
 
 # Ignore tags configuration
 tags.ts

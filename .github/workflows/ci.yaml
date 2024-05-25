@@ -1,0 +1,27 @@
+name: CI/CD Build Pipeline
+
+on:
+  push:
+    branches-ignore:
+      - main
+jobs:
+  build:
+    name: CI Build Pipeline
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+      - name: Dependencies
+        run: npm ci --ignore-scripts
+      - name: Linting
+        run: npm run lint
+      - name: Unit Testing
+        run: npm run test
+      - name: Transpile
+        run: npm run compile
+      - name: Synthesize
+        run: npm run synth
+      - name: Differences
+        run: npm run diff
