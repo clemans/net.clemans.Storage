@@ -4,6 +4,9 @@ on:
   push:
     branches-ignore:
       - main
+permissions:
+  id-token: write
+  contents: read
 jobs:
   build:
     name: CI Build Pipeline
@@ -13,6 +16,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: 'package.json'
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_IAM_ROLE }}
+          aws-region: ${{ secrets.AWS_REGION }}
       - name: Dependencies
         run: npm ci --ignore-scripts
       - name: Linting
