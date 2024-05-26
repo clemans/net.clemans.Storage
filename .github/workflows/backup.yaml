@@ -1,0 +1,23 @@
+name: Backup GitHub Repository to Amazon S3 Bucket
+on:
+  push:
+    branches: [main, master]
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_IAM_ROLE }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Copy Repo to S3 Bucket
+        run: |
+          aws s3 sync . ${{ secrets.AWS_S3_BUCKET_URI }}/${{ github.event.repository.name }}
