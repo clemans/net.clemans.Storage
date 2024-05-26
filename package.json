@@ -7,6 +7,9 @@
 	"bin": {
 		"clemans-net-storage": "dist/bin/index.js"
 	},
+	"engines": {
+		"node": ">=21"
+	},
 	"scripts": {
 		"lint": "npx eslint .",
 		"build": "npm run lint && npm run compile && npm run synth && npm run diff",
